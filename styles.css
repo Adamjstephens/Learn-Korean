@@ -1,12 +1,13 @@
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
-    background-image: url(https://t3.ftcdn.net/jpg/02/22/42/98/360_F_222429842_W1UgqH4mCRezGz49wTued9PLvK6raFZx.jpg);
+    background-image: url(https://media4.giphy.com/media/12LFHxqNAktyi4/200w.gif?cid=82a1493bjlg5oesg0hy5y14sfcxrw259qxxig33orvl8ij9y&ep=v1_gifs_related&rid=200w.gif&ct=g);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     color: #333;
+    image-resolution: 4000px;
   }
   
   .container {
