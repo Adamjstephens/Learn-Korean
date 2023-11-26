@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    Welcome to your Korean learning adventure! This site may not teach you Korean, but it is a great place for you to store all of the vocabulary you need to practice and master.
+  </div>
+
+  <div class="container2">
+    <h1>Vocab List</h1>
+
+    <form id="expense-form">
+      <label for="word">English Word/Phrase:</label>
+      <input type="text" id="word" placeholder="Enter Word or Phrase" required>
+
+      <label for="pronunciation">Pronounce It:</label>
+      <input type="text" id="item-service" placeholder="Pronounced like this...">
+
+      <button type="button" onclick="addExpense()">Add Vocab Word/Phrase</button>
+      <button type="button" onclick="confirmRemoveAllExpenses()">Remove All Words/Phrases</button>
+    </form>
+  </div>
+
+  <div class="explist">
+    <h2>Vocabulary List</h2>
+    <ul id="expense-list"></ul>
+  </div>
+
+  <script>
+    let expenses = [];
+
+    loadStoredData();
+
+    function loadStoredData() {
+      if (localStorage.getItem('expenseData')) {
+        const storedData = JSON.parse(localStorage.getItem('expenseData'));
+        expenses = storedData.expenses || [];
+        updateExpenseList();
+      }
+    }
+
+    function saveDataToLocalStorage() {
+      const expenseData = {
+        expenses,
+      };
+      localStorage.setItem('expenseData', JSON.stringify(expenseData));
+    }
+
+    function addExpense() {
+      const wordInput = document.getElementById('word');
+      const pronunciationInput = document.getElementById('item-service');
+
+      const word = wordInput.value.trim();
+      const pronunciation = pronunciationInput.value.trim();
+
+      if (!word) {
+        alert('Please enter a word or phrase.');
+        return;
+      }
+
+      const date = new Date();
+      const expense = {
+        word,
+        pronunciation,
+        dateTime: date,
+      };
+
+      expenses.push(expense);
+      saveDataToLocalStorage();
+
+      updateExpenseList();
+
+      wordInput.value = '';
+      pronunciationInput.value = '';
+    }
+
+    function removeExpense(button, word) {
+      const listItem = button.parentNode;
+      listItem.parentNode.removeChild(listItem);
+
+      const index = expenses.findIndex((expense) => expense.word === word);
+      if (index !== -1) {
+        expenses.splice(index, 1);
+      }
+      saveDataToLocalStorage();
+    }
+
+    function removeAllExpenses() {
+      const expenseList = document.getElementById('expense-list');
+      expenseList.innerHTML = '';
+      expenses = [];
+      saveDataToLocalStorage();
+    }
+
+    function confirmRemoveAllExpenses() {
+      if (confirm('Are you sure you want to remove all Vocab Words?')) {
+        removeAllExpenses();
+      }
+    }
+
+    function updateExpenseList() {
+      const expenseList = document.getElementById('expense-list');
+      expenseList.innerHTML = '';
+
+      expenses.forEach((expense) => {
+        const listItem = document.createElement('li');
+        listItem.className = 'expense-item';
+        listItem.innerHTML = `
+          <div>
+            Word/Phrase: ${expense.word} - Pronunciation: ${expense.pronunciation}
+          </div>
+          <button onclick="removeExpense(this, '${expense.word}')">Remove</button>
+        `;
+        expenseList.appendChild(listItem);
+      });
+    }
+  </script>
+</body>
+
+</html>
