@@ -92,7 +92,9 @@ body {
     width: 100%; /* Make the item 100% width */
     box-sizing: border-box;
 font-style: italic;
-text-decoration-line: underline;
+text-decoration-line: none;
+font-size: larger;
+float: ;
 
 
   }
