@@ -113,9 +113,9 @@
         const listItem = document.createElement('li');
         listItem.className = 'expense-item';
         listItem.innerHTML = `
-          <div>
-            Word/Phrase: ${expense.word} - Pronunciation: ${expense.pronunciation}
-          </div>
+          <div class = "id12" >
+            Word/Phrase: </div>  ${expense.word} 
+            <div class = "id12" > Pronunciation: </div> ${expense.pronunciation}
           <button onclick="removeExpense(this, '${expense.word}')">Remove</button>
         `;
         expenseList.appendChild(listItem);
