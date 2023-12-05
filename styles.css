@@ -1,12 +1,12 @@
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
-    background-image: url(https://media4.giphy.com/media/12LFHxqNAktyi4/200w.gif?cid=82a1493bjlg5oesg0hy5y14sfcxrw259qxxig33orvl8ij9y&ep=v1_gifs_related&rid=200w.gif&ct=g);
+   background-color: rgb(255, 183, 76);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    color: #333;
+    color: #8f2727;
     image-resolution: 4000px;
   }
   
@@ -122,3 +122,16 @@ float: ;
   .id12{
 color: blue;
   }
+form
+{
+align-self: center;
+}
+h2
+{
+  background-color: black;
+  color: azure;
+  width: fit-content;
+  position: relative;
+  left: 175px;
+
+}
