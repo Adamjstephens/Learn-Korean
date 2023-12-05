@@ -10,26 +10,25 @@
 
 <body>
   <div class="container">
-   ACCOUNT MASTER
-  </div>
+My Korean Vocab Journal  </div>
 
   <div class="container2">
-    <h1>Account Center</h1>
+    <h1>Vocab List</h1>
 
     <form id="expense-form">
-      <label for="word">EMAIL:</label>
-      <input type="text" id="word" placeholder="Enter email here..." required>
+      <label for="word">Word/Phrase:</label>
+      <input type="text" id="word" placeholder="Enter word/phrase here..." required>
 
-      <label for="pronunciation">PASSWORD:</label>
-      <input type="text" id="item-service" placeholder="Enter password here...">
+      <label for="pronunciation">Phonetically:</label>
+      <input type="text" id="item-service" placeholder="Enter pronunciation here...">
 
-      <button type="button" onclick="addExpense()">Add Account to list</button>
-      <button type="button" onclick="confirmRemoveAllExpenses()">Remove All Accounts</button>
+      <button type="button" onclick="addExpense()">Add Word/Phrase to list</button>
+      <button type="button" onclick="confirmRemoveAllExpenses()">Remove All Words</button>
     </form>
   </div>
 
   <div class="explist">
-    <h2>Account List</h2>
+    <h2>Vocab List</h2>
     <ul id="expense-list"></ul>
   </div>
 
@@ -100,7 +99,7 @@
     }
 
     function confirmRemoveAllExpenses() {
-      if (confirm('Are you sure you want to remove all Accounts?')) {
+      if (confirm('Are you sure you want to remove all Words?')) {
         removeAllExpenses();
       }
     }
@@ -114,8 +113,8 @@
         listItem.className = 'expense-item';
         listItem.innerHTML = `
           <div class = "id12" >
-            EMAIL: </div>  ${expense.word} 
-            <div class = "id12" > PASSWORD: </div> ${expense.pronunciation}
+            Word/phrase: </div>  ${expense.word} 
+            <div class = "id12" > Pronounciation: </div> ${expense.pronunciation}
           <button onclick="removeExpense(this, '${expense.word}')">Remove</button>
         `;
         expenseList.appendChild(listItem);
